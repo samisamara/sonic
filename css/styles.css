@@ -1,0 +1,129 @@
+body {
+    background-image: url(/backgrounds/hall_of_sonic_index_desktop_bg.png);
+    background-size: 100%, 100%;
+    background-repeat: repeat;
+    background-color: rgb(46, 46, 46);
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: white;
+}
+
+#wrapper2 {
+    width: 85%;
+    margin: 0 auto;
+}
+
+#wrapper1 {
+    width: 70%;
+    margin: 0 auto;
+    
+}
+
+nav {
+    word-spacing: 1.5em;
+    font-size: 1.5em;
+    font-family: "Comic Sans MS";
+    text-align: center;
+    margin: 10px;
+    border: 2px solid yellow;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav li {
+    display: inline-block;
+}
+
+nav a:link { color: yellow; }
+nav a:visited { color: dodgerblue; }
+nav a:hover { color: white; }
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+img {
+    width: auto;
+    height: 75%;
+    background-color: transparent;
+    display: inline-flex;
+    margin: auto;
+}
+
+h1 {
+    font-family: "Vipnagorgialla";
+    font-size: 5.5em;
+    padding-top: 0%;
+    margin: auto;
+    margin-top: 0;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    text-align: center;
+    background: url(/headerbgs/headerbg.png);
+    background-repeat: repeat-x;
+    background-size: 2.5em;
+    color: yellow;
+    -webkit-text-stroke: 4px black;
+}
+
+h2 {
+    font-family: "Vipnagorgialla";
+    font-size: 2em;
+    -webkit-text-stroke: 1.5px black;
+    margin-top: 2em;
+    margin-bottom: -10px;
+}
+
+h3 {
+    font-size: 4em;
+    font-family: "Impact LT Std";
+    font-style: normal;
+    text-transform: uppercase;
+    color: black;
+    -webkit-text-stroke: .15px white;
+    letter-spacing: 6px;
+    margin: auto;
+    line-height: 45px;
+    word-spacing: -.5px;
+}
+
+h4 {
+    font-size: 1.5em;
+    font-family: "Impact LT Std";
+    text-transform: uppercase;
+    color: black;
+    -webkit-text-stroke: .5px white;
+    letter-spacing: 2px;
+    margin: auto;
+    line-height: 35px;
+    word-spacing: -1px;
+}
+
+p {
+    font-family: "Comic Sans MS";
+}
+
+.char {
+    color: aqua;
+    font-family: "Comic Sans MS";
+    width: 18em;
+    float: left;
+    padding: 20px;
+    border: 0px solid red;
+    height: 25em;
+    text-align: center;
+    margin: auto;
+    display: block; 
+}
+
+footer {
+    clear: left;
+    font-size: .60em;
+    font-style: italic;
+    padding-top: 2em;
+    text-align: center;
+}
