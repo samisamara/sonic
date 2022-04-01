@@ -1,0 +1,83 @@
+<!-- 
+	Sonic practice website
+
+    Author: Sami Samara
+    Date:   12/14/2021
+	Edited using VS code
+
+    Filename: index.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Search through the world and characters of Sonic the Hedgehog"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Hall of Sonic - jstesting</title>
+  </head>
+  <body>
+    <div id="wrapper1">
+    <h1>Hall of Sonic</h1>
+    <div id="wrapper2">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="characters.html">Characters</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="/tester.js">js_tester</a>
+        </ul>
+    </nav>
+
+    <form>Type the name of a color to change the color of the text box</form>
+    <input type="text" id="changingColor" onkeydown="pushed()">
+
+    <h2>Games</h2>
+
+    <div class="game">
+      <img src="/game_images/sonic_3.jpg" alt="sonic_3" id="sonic_3_image">
+    </div>
+    <div class="game">
+      <img src="/game_images/sonic_adventure_2_battle.jpg" alt="sonic_adventure_2_battle" id="sonic_adventure_2_battle_image">
+    </div>
+    <div class="game">
+      <img src="/game_images/sonic_generations.jpg" alt="sonic_generations" id="sonic_generations_image">
+    </div>
+
+
+    <form>
+      What is your favorite game?
+      <select id="gameChoice">
+        <option value="sonic_3">Sonic the Hedgehog 3</option>
+        <option value="sonic_adventure_2_battle">Sonic Adventure 2 Battle</option>
+        <option value="sonic_generations">Sonic Generations</option>
+      </select>
+    </form>
+      <button onclick="gameChoose()">View box art</button>
+
+    <div id="gameImage">
+      <img id="picture" src="">
+    </div>
+
+    <button type="button" onclick="timeFunction()">Display Time</button>
+    <h2 id="timeDisplay"></h2>
+
+    <h3>This website is still a work in progress</h3>
+    <h3>This is a preview for the final project</h3>
+
+    <script src="/javascript/games.js"></script>
+    </div>
+    </div>
+  </body>
+
+  <!--footer-->
+  <footer>
+      <p>&copy; Copyright 2022 Hall of Sonic</p>
+      <p>All Rights Reserved. "Sonic the Hedgehog" and all other related trademarks are (c) Sega.</p>
+  </footer>
+</html>

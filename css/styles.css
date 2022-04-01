@@ -46,6 +46,7 @@ nav ul {
     padding: 0;
     margin: 0;
 }
+
 img {
     width: auto;
     height: 75%;
@@ -76,31 +77,13 @@ h2 {
     -webkit-text-stroke: 1.5px black;
     margin-top: 2em;
     margin-bottom: -10px;
+    text-align: center;
 }
 
-h3 {
-    font-size: 4em;
-    font-family: "Impact LT Std";
-    font-style: normal;
-    text-transform: uppercase;
-    color: black;
-    -webkit-text-stroke: .15px white;
-    letter-spacing: 6px;
+.nameLogo {
+    height: 5.3em;
+    width: auto;
     margin: auto;
-    line-height: 45px;
-    word-spacing: -.5px;
-}
-
-h4 {
-    font-size: 1.5em;
-    font-family: "Impact LT Std";
-    text-transform: uppercase;
-    color: black;
-    -webkit-text-stroke: .5px white;
-    letter-spacing: 2px;
-    margin: auto;
-    line-height: 35px;
-    word-spacing: -1px;
 }
 
 p {
@@ -108,12 +91,21 @@ p {
 }
 
 .char {
-    color: aqua;
     font-family: "Comic Sans MS";
     width: 18em;
     float: left;
     padding: 20px;
-    border: 0px solid red;
+    height: 25em;
+    text-align: center;
+    margin: auto;
+    display: block;
+}
+
+.game {
+    font-family: "Comic Sans MS";
+    width: 18em;
+    float: left;
+    padding: 20px;
     height: 25em;
     text-align: center;
     margin: auto;
