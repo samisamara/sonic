@@ -63,6 +63,11 @@ function charDisplay() {
     //alert(charMessage);
 }
 
+let charObjList = {
+    "charName": "Sonic",
+    "charImage": "temp"
+};
+
 //array defined globally to avoid character list being resetted everytime
 let charList = [];
 function charAddToArray() {
