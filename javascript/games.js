@@ -48,8 +48,13 @@ let obPerson = {
 
 function timeFunction() {
     document.querySelector("#timeDisplay").innerHTML = Date();
-}
+};
 
+let gameRelease = [
+    { "gameTitle": "Sonic the Hedgehog 3 and Knuckles", "yearRelease": 1994 },
+    { "gameTitle": "Sonic Adventure 2 Battle", "yearRelease": 2001 },
+    { "gameTitle": "Sonic Generations", "yearRelease": 2011 }
+];
 
 
 

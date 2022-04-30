@@ -115,4 +115,4 @@ let prevImage = "/character_images/Sonic.png"
 
 sonic.addEventListener("mouseout", () => {
     sonic.src= prevImage;
-})
+});

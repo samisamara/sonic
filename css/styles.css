@@ -119,3 +119,27 @@ footer {
     padding-top: 2em;
     text-align: center;
 }
+
+.error {
+    font-size: 20px;
+    margin: 10px;
+    color: red;
+    border: 1px solid red;
+}
+
+.success {
+    font-size: 25px;
+    margin: 12px;
+    color: green;
+    border: 2px solid green;
+}
+
+.liStuff {
+    list-style-type: none;
+    max-width: 200px;
+    padding: 8px;
+    margin: 8px auto;
+    background: #eee;
+    border: 1px dotted #ddd;
+    color: black;
+}
