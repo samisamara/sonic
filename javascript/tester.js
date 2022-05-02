@@ -217,18 +217,68 @@ toDoListButton.addEventListener('click', () => {
 // "e" is a parameter automatically given to us when an event happens
 // e contains information about the event that happened
 // this does not need to be called e. This can be named whatever we want
-const items = document.querySelectorAll('li');
-items.forEach(item => {
-    item.addEventListener('click', e => {
-        console.log(e.target);
-        //e.target.style.textDecoration = 'line-through';
+// const items = document.querySelectorAll('li');
+// items.forEach(item => {
+//     item.addEventListener('click', e => {
+//         console.log(e.target);
+//         //e.target.style.textDecoration = 'line-through';
+//         e.target.remove();
+//         //this line of code stops event bubbling from this point
+//         e.stopPropagation();
+//     });
+// });
+
+// Example of event bubbling. 
+// When an event occurs, the event bubbles up the DOM to the parent of where the event occured
+// The event listener then checks for an event in the parent target.
+// If there is an event, the event takes action.
+// This process gets repeated all the way to the root of the file (HTML).
+// This is also an example of event delegation
+// This is essentially a pattern to handle events properly
+// Instead of adding an event listener to each and every similar target,
+// we can add an event listener to a parent element and call out an event on a
+// particular target using e target properly
+ul.addEventListener('click', e => {
+    //console.log('event in UL');
+    if (e.target.tagName === "LI") {
         e.target.remove();
-    });
+    };
 });
 
+// example of having an element react to being copied
+const copy = document.querySelector('.copy-me');
+copy.addEventListener('copy', () => {
+    console.log('OI! my content is copyright');
+});
 
+// this is an example of an element reacting to mouseposition within it.
+// offsetX and offsetY are how far away the mouse is from the top right of the element
+// use console.log(e) to see other information about the elements
+const box = document.querySelector('.box');
+box.addEventListener('mousemove', e => {
+    box.textContent = `x pos - ${e.offsetX} y pos - ${e.offsetY}`;
+});
 
+// this is an example of the entire webpage reacting to the user scrolling up and down
+// the output is very similar to the mousemove example above
+document.addEventListener('wheel', e => {
+    //console.log(e.pageX, e.pageY);
+});
 
+const popupButton = document.querySelector('#popup-button');
+const popup = document.querySelector('.popup-wrapper');
+const popupCloser = document.querySelector('.popup-close');
+popupButton.addEventListener('click', () => {
+    popup.style.display = 'block';
+});
+
+popupCloser.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
+
+popup.addEventListener('click', () => {
+    popup.style.display = 'none';
+});
 
 
 
