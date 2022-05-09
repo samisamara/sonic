@@ -265,7 +265,7 @@ document.addEventListener('wheel', e => {
     //console.log(e.pageX, e.pageY);
 });
 
-const popupButton = document.querySelector('#popup-button');
+const popupButton = document.querySelector('.popup-button');
 const popup = document.querySelector('.popup-wrapper');
 const popupCloser = document.querySelector('.popup-close');
 popupButton.addEventListener('click', () => {
@@ -278,6 +278,45 @@ popupCloser.addEventListener('click', () => {
 
 popup.addEventListener('click', () => {
     popup.style.display = 'none';
+});
+
+const form = document.querySelector('.signup-form');
+const feedback = document.querySelector('.feedback');
+const usernamePattern = /^[a-zA-Z]{6,12}$/;
+// this is an example of a regular expression. 
+// These are extremly helpful when making sure user inputted data is valid
+// this must begin and end in forward slashes -> /enterPhraseRequirementsHere/
+// ^ demands the phrase is in the beginning
+// $ demands the phrase is in the end
+// [a-z] searches or matches within these range of characters
+// You can add more to search for like this -> [a-zA-Z0-9]
+// To search for a certain range of numbers, type immedietly after the brackets: {4,10} or {7,} or {,25}
+form.addEventListener('submit', e => {
+    // the default action of a submit button is to refresh the page. The line below stops that unintended action
+    e.preventDefault();
+
+    // to pull information from a text box in a form: form.idNameHere.value
+    const username = form.username.value;
+    // validation
+    if(usernamePattern.test(username)) {
+        //feedback good info
+        feedback.textContent = 'that username is valid!';
+    }
+    else {
+        //feedback help info
+        feedback.textContent = 'username must contain letters only & be between 6-12 characters long';
+    }
+});
+
+// live feedback
+form.username.addEventListener('keyup', e => {
+    //console.log(e.target.value, form.username.value); <- those both do the same thing. Either way works.
+    console.log(e);
+    if (usernamePattern.test(e.target.value)) {
+        form.username.setAttribute('class', 'usernameSuccess');
+    } else {
+        form.username.setAttribute('class', 'usernameError');
+    }
 });
 
 
