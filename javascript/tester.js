@@ -116,7 +116,7 @@ function addTwoNums(num1, num2) {
    var output =  "";
    output = num1+num2;
    console.log(output);
-}
+};
 
 //example of adding and removing CSS attributes to an element in an html file
 const title = document.querySelector('h3');
