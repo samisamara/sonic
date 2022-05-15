@@ -99,6 +99,7 @@ p {
     text-align: center;
     margin: auto;
     display: block;
+    align-items: center;
 }
 
 .game {
@@ -218,4 +219,46 @@ input {
     display: block;
     margin: 10px auto;
     padding: 4px;
+}
+
+.colorChanging {
+    background-color: red;
+    color: black;
+    margin: 20px auto;
+    max-width: 250px;
+    padding: 10px;
+    text-align: center;
+}
+
+.colorFront {
+    margin: auto;
+    background-color: white;
+    padding: 10px;
+}
+
+.charTestDisplay {
+    align-content: center;
+}
+
+.aligner {
+    align-content: center;
+}
+
+.charTesting {
+    width: 15em;
+    padding: 10px;
+    height: auto;
+    margin: 20px auto;
+    display: none;
+    /*background-color: white;*/
+    background-position: center;
+}
+
+#charScreen {
+    /*background: white;*/
+    float: left;
+}
+
+.charContainer {
+    float: left;
 }

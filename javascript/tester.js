@@ -24,7 +24,7 @@ var testing = function(a, b) {
     return result;
 }
 
-console.log(testing(first, second));
+// console.log(testing(first, second));
 
 // const blogs = [
 //     { title: 'My favorite foods', likes: 30 },
@@ -44,21 +44,21 @@ let user = {
     ],
     //example of making functions for object
     login() {
-        console.log("The user logged in");
+        // console.log("The user logged in");
     },
     logout() {
-        console.log("The user logged out");
+        // console.log("The user logged out");
     },
     logBlogs() {
-        console.log("this user has written the following blogs:");
+        // console.log("this user has written the following blogs:");
         this.blogs.forEach(blog => {
-            console.log(blog.title, blog.likes);
+            // console.log(blog.title, blog.likes);
         })
     }
 };
-console.log(user);
+// console.log(user);
 user.age = 35;
-console.log(user.age);
+// console.log(user.age);
 //example of using made functions for objects
 user.login();
 user.logout();
@@ -84,7 +84,7 @@ charList.innerHTML = characterList;
 
 //example of adding information from an object list to an html element
 let divChanging = document.querySelector('#divChanger');
-console.log(divChanging);
+// console.log(divChanging);
 //divChanging.innerHTML += '<h2>This is a new H2, transformed from javascript</h2>';
 const content = document.querySelector('.content');
 const people = ['sonic', 'tails', 'knuckles'];
@@ -96,32 +96,32 @@ people.forEach(person => {
 
 //example of changing the attribute values (the apple hyperlink) and the text of an element
 const link = document.querySelector('#googleLink');
-console.log(link.getAttribute('href'));
+// console.log(link.getAttribute('href'));
 link.setAttribute('href', 'https://www.apple.com');
 link.innerText = 'This was a link to google, but is now a link to apple.com'
 
 //example of changing the value of an attribute (like changing an id name)
 const mssg = document.querySelector('#textChanging');
-console.log(mssg.getAttribute('id'));
+// console.log(mssg.getAttribute('id'));
 mssg.setAttribute('id', 'success');
-console.log(mssg.getAttribute('id'));
+// console.log(mssg.getAttribute('id'));
 mssg.setAttribute('style', 'color: green;');
 
 //example of a random number generator
 const random = Math.random();
-console.log(Math.round(random * 12));
+// console.log(Math.round(random * 12));
 
 //example of function with parameters
 function addTwoNums(num1, num2) {
    var output =  "";
    output = num1+num2;
-   console.log(output);
+//    console.log(output);
 };
 
 //example of adding and removing CSS attributes to an element in an html file
 const title = document.querySelector('h3');
-console.log(title.style);
-console.log(title.style.color);
+// console.log(title.style);
+// console.log(title.style.color);
 title.style.margin = '50px';
 title.style.color = 'crimson';
 title.style.fontSize = '60px';
@@ -129,12 +129,12 @@ title.style.margin = '';
 
 //example of adding or removing a class to an html element
 const pChange = document.querySelector('#errorToSuccess');
-console.log(pChange.classList);
+// console.log(pChange.classList);
 pChange.classList.add('error');
-console.log(pChange.classList);
+// console.log(pChange.classList);
 pChange.classList.remove('error');
 pChange.classList.add('success');
-console.log(pChange.classList);
+// console.log(pChange.classList);
 
 //this piece of code collects all h4 elements
 //it then groups them all together under, and checks each one's inner text
@@ -142,7 +142,7 @@ console.log(pChange.classList);
 //if the h4 element includes the word 'success', it will add class success to the element
 const h4Collection = document.querySelectorAll('h4');
 h4Collection.forEach(h4Singular => {
-    console.log(h4Singular.innerText);
+    // console.log(h4Singular.innerText);
     if (h4Singular.innerText.includes('error')) {
         h4Singular.classList.add('error');
     };
@@ -183,22 +183,22 @@ Array.from(article.children).forEach((child) => {
 
 //example of finding the parent of an element
 const title2 = document.querySelector('#parentFinding');
-console.log(title2.parentElement);
+// console.log(title2.parentElement);
 //by adding another ".parentElement" to the code, we can find the parent of the parent
 //this process can be duplicated over and over until reaching the root (html)
-console.log(title2.parentElement.parentElement);
+// console.log(title2.parentElement.parentElement);
 
 // these two lines are example of finding the next and previous siblings in a tree
-console.log(title2.nextElementSibling);
-console.log(title2.previousElementSibling);
+// console.log(title2.nextElementSibling);
+// console.log(title2.previousElementSibling);
 
 //chaining
-console.log(title2.nextElementSibling.parentElement.children);
+// console.log(title2.nextElementSibling.parentElement.children);
 
 //this is an example of an event listener
 const toDoListButton = document.querySelector('#toDoListButton');
 toDoListButton.addEventListener('click', () => {
-    console.log("You clicked me!");
+    // console.log("You clicked me!");
 });
 
 // example of adding elements to an html page
@@ -220,7 +220,7 @@ toDoListButton.addEventListener('click', () => {
 // const items = document.querySelectorAll('li');
 // items.forEach(item => {
 //     item.addEventListener('click', e => {
-//         console.log(e.target);
+        // console.log(e.target);
 //         //e.target.style.textDecoration = 'line-through';
 //         e.target.remove();
 //         //this line of code stops event bubbling from this point
@@ -239,7 +239,6 @@ toDoListButton.addEventListener('click', () => {
 // we can add an event listener to a parent element and call out an event on a
 // particular target using e target properly
 ul.addEventListener('click', e => {
-    //console.log('event in UL');
     if (e.target.tagName === "LI") {
         e.target.remove();
     };
@@ -248,7 +247,7 @@ ul.addEventListener('click', e => {
 // example of having an element react to being copied
 const copy = document.querySelector('.copy-me');
 copy.addEventListener('copy', () => {
-    console.log('OI! my content is copyright');
+    // console.log('OI! my content is copyright');
 });
 
 // this is an example of an element reacting to mouseposition within it.
@@ -310,8 +309,8 @@ form.addEventListener('submit', e => {
 
 // live feedback
 form.username.addEventListener('keyup', e => {
-    //console.log(e.target.value, form.username.value); <- those both do the same thing. Either way works.
-    console.log(e);
+    // console.log(e.target.value, form.username.value); <- those both do the same thing. Either way works.
+    // console.log(e);
     if (usernamePattern.test(e.target.value)) {
         form.username.setAttribute('class', 'usernameSuccess');
     } else {
@@ -319,6 +318,105 @@ form.username.addEventListener('keyup', e => {
     }
 });
 
+const scores = [10, 30, 15, 25, 50, 40, 5];
+// example of filtering an array based on a condition.
+// this method is nondestructive, meaning nothing in the original array actually gets changed
+// in order to update this, we have to make a new array that holds the new filtered list 
+const filteredScores = scores.filter((score) => {
+    return score > 20;
+});
+
+// console.log(filteredScores);
+
+const users = [
+    {name: 'sonic', premium: true},
+    {name: 'tails', premium: true},
+    {name: 'knuckles', premium: false},
+    {name: 'amy', premium: true},
+    {name: 'cream', premium: false}
+];
+
+// similar to last array filter example, we sort by if premium == true or false
+const premiumUsers = users.filter(user => user.premium);
+// console.log(premiumUsers);
+
+// map method: this method makes a new array from an array after altering it in someway
+const prices = [20, 10, 30, 25, 15, 40, 80, 5];
+const salePrices = prices.map((price) => {
+    return price/2;
+});
+// console.log(salePrices);
+
+const products = [
+    {name: 'gold star', price: 20},
+    {name: 'mushroom', price: 40},
+    {name: 'green shells', price: 30},
+    {name: 'banana skin', price: 10},
+    {name: 'red shells', price: 50}
+];
+const saleProducts = products.map((product) => {
+    if (product.price > 30) {
+        return {name: product.name, price: product.price/2};
+    }
+    else {
+        return product;
+    }
+});
+// console.log(saleProducts);
+
+// reduce method: this method adds how many of an array matches the argument and displays the total number using recurrsion
+const points = [10, 20, 60, 70, 90, 30];
+const result = points.reduce((acc, curr) => {
+    if (curr > 50) {
+        acc++;
+    }
+    return acc;
+}, 0);
+// console.log(result);
+
+// another example of reduce method, this time with object lists
+const playerScores = [
+    {player: 'vector', score: 50},
+    {player: 'espio', score: 30},
+    {player: 'charmy', score: 50},
+    {player: 'vector', score: 60},
+    {player: 'espio', score: 30},
+    {player: 'charmy', score: 68},
+    {player: 'vector', score: 90},
+    {player: 'espio', score: 51},
+    {player: 'charmy', score: 45},
+    {player: 'vector', score: 50},
+    {player: 'espio', score: 30},
+    {player: 'charmy', score: 73},
+    {player: 'vector', score: 55},
+    {player: 'espio', score: 30},
+    {player: 'charmy', score: 78},
+    {player: 'vector', score: 40},
+    {player: 'espio', score: 56},
+    {player: 'charmy', score: 98}
+    
+];
+const vectorTotal = playerScores.reduce((acc, curr) => {
+    if (curr.player === 'vector') {
+        acc += curr.score;
+    }
+    return acc;
+}, 0);
+// console.log(vectorTotal);
+
+// find method: finds the first array element that meets the specified condition. Does not contiue when one is found.
+const nums = [10, 5, 0, 40, 60, 10, 20, 70];
+const firstHighScore = nums.find((num) => {
+    return num > 50;
+});
+
+// console.log(firstHighScore);
+
+const charNames = ['Sonic', 'Tails', 'Knuckles', 'Amy', 'Cream', 'Cheese', 'Big', 'Shadow', 'Rouge', 'E123-Omega', 'Vector', 'Espio', 'Charmy', 'Silver', 'Blaze', 'Eggman', 'Marine', 'Gemerl'];
+console.log(charNames);
+// examples of sorting a list by alphabetical or reverse alphabetical order:
+// charNames.sort();
+// charNames.reverse();
 
 
 

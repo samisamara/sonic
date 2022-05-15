@@ -111,7 +111,7 @@ sonic.addEventListener("mouseover", () => {
     sonic.src = newSonicImage;
 });
 
-let prevImage = "/character_images/Sonic.png"
+let prevImage = "/character_images/sonic.png"
 
 sonic.addEventListener("mouseout", () => {
     sonic.src= prevImage;

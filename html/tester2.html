@@ -1,0 +1,85 @@
+<!-- 
+	Sonic practice website
+
+    Author: Sami Samara
+    Date:   12/14/2021
+	Edited using VS code
+
+    Filename: index.html
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Search through the world and characters of Sonic the Hedgehog"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Hall of Sonic</title>
+  </head>
+  <body>
+    <div id="wrapper1">
+      <h1>Hall of Sonic</h1>
+      <div id="wrapper2">
+        <nav>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="characters.html">Characters</a></li>
+            <li><a href="games.html">Games</a></li>
+            <li><a href="tester.html">tester</a></li>
+          </ul>
+        </nav>
+
+        <div class="colorChanging">
+            <div class="colorFront">
+                <p>This is some flashy text!</p>
+            </div>
+        </div>
+
+    <form>
+        <div class="aligner">
+            Who is your favorite sonic character? 
+            <select id="charChoose">
+                <option value="sonic">Sonic the Hedgehog</option>
+                <option value="tails">Tails the Fox</option>
+                <option value="knuckles">Knuckles the Echidna</option>
+                <option value="amy">Amy Rose</option>
+                <option value="cream">Cream the Rabbit</option>
+                <option value="shadow">Shadow the Hedgehog</option>
+                <option value="rouge">Rouge the Bat</option>
+                <option value="omega">E123-Omega</option>
+                <option value="eggman">Dr. Eggman</option>
+                <option value="big">Big the Cat</option>
+                <option value="vector">Vector the Crocodile</option>
+                <option value="espio">Espio the Chameleon</option>
+                <option value="charmy">Charmy Bee</option>
+                <option value="blaze">Blaze the Cat</option>
+                <option value="silver">Silver the Hedgehog</option>
+            </select>
+            <button class="submit" id="charDisplay">Pick This Character!</button>
+            <div class="char">
+                <img class="charTesting" src="" alt="character">
+            </div>
+        </div>
+    </form>
+        
+
+
+      </div>
+    </div>
+    <script src="/javascript/tester2.js"></script>
+  </body>
+
+  <!--footer-->
+  <footer>
+    <p>&copy; Copyright 2022 Hall of Sonic</p>
+    <p>
+      All Rights Reserved. "Sonic the Hedgehog" and all other related trademarks
+      are (c) Sega.
+    </p>
+  </footer>
+</html>
