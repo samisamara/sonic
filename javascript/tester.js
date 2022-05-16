@@ -413,13 +413,65 @@ const firstHighScore = nums.find((num) => {
 // console.log(firstHighScore);
 
 const charNames = ['Sonic', 'Tails', 'Knuckles', 'Amy', 'Cream', 'Cheese', 'Big', 'Shadow', 'Rouge', 'E123-Omega', 'Vector', 'Espio', 'Charmy', 'Silver', 'Blaze', 'Eggman', 'Marine', 'Gemerl'];
-console.log(charNames);
+// console.log(charNames);
 // examples of sorting a list by alphabetical or reverse alphabetical order:
 // charNames.sort();
 // charNames.reverse();
 
+const robots = [
+    {name: 'Gamma', score: 30},
+    {name: 'Omega', score: 45},
+    {name: 'Emerl', score: 40},
+    {name: 'Gemerl', score: 45},
+    {name: 'Metal Sonic', score: 60},
+    {name: 'Zero', score: 20},
+];
 
+// for numbers, objects, or anything more than names, there are more steps involved.
+// this method uses recursion to sort through an array.
+robots.sort((a, b) => {
+    if (a.score > b.score) {
+        return -1;
+    }
+    else if (b.score > a.score) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+});
+console.log(robots);
 
+const listNums = [10, 50, 20, 5, 35, 70, 45];
+// this works the exact same way as the robots example. If a is bigger, it comes first. If b is bigger, it comes first.
+// if they are equal, nothing is changed
+listNums.sort((a, b) => a - b);
+// console.log(listNums);
 
+const electronics = [
+    {name: 'headphones', price: 200},
+    {name: 'speaker', price: 150},
+    {name: 'microphone', price: 100},
+    {name: 'iphone', price: 900},
+    {name: 'ipad', price: 1200},
+    {name: 'xbox', price: 400},
+    {name: 'playstation', price: 500}
+];
+ 
+// example of chaining array methods
+// first we are filtering array by items who's price is 400 or more
+const filtered = electronics.filter(electronic => electronic.price >= 400);
+//this the map function lets us map to an array of strings
+const promos = filtered.map(electronic => {
+    return `the ${electronic.name} is ${electronic.price / 2} dollars`;
+});
 
+// this is a more efficient version of the method above. Sometimes we can include .map in the same line as .filter
+// side note: seperating the function into different lines and indent by every method chained on is a standard way of making code
+// more legible
+const promotions = electronics
+    .filter(electronic => electronic.price >= 400)
+    .map(electronic => `the ${electronic.name} is ${electronic.price / 1.2} dollars`);
+console.log(promos);
+console.log(promotions);
 
