@@ -65,5 +65,10 @@
     { "character": "Zeena", "yearIntro": "2013", "species": "Zeti" },
     { "character": "Zor", "yearIntro": "2013", "species": "Zeti" },
     { "character": "Sticks", "yearIntro": "2014", "species": "Badger" },
+    { "character": "Heavy King", "yearIntro": "2017", "species": "Hard Boiled Heavy" },
+    { "character": "Heavy Gunner", "yearIntro": "2017", "species": "Hard Boiled Heavy" },
+    { "character": "Heavy Shinobi", "yearIntro": "2017", "species": "Hard Boiled Heavy" },
+    { "character": "Heavy Magician", "yearIntro": "2017", "species": "Hard Boiled Heavy" },
+    { "character": "Heavy Rider", "yearIntro": "2017", "species": "Hard Boiled Heavy" },
     { "character": "Infinite", "yearIntro": "2017", "species": "Jackal" }
 ]
