@@ -440,7 +440,7 @@ robots.sort((a, b) => {
         return 0;
     }
 });
-console.log(robots);
+// console.log(robots);
 
 const listNums = [10, 50, 20, 5, 35, 70, 45];
 // this works the exact same way as the robots example. If a is bigger, it comes first. If b is bigger, it comes first.
@@ -472,6 +472,134 @@ const promos = filtered.map(electronic => {
 const promotions = electronics
     .filter(electronic => electronic.price >= 400)
     .map(electronic => `the ${electronic.name} is ${electronic.price / 1.2} dollars`);
-console.log(promos);
-console.log(promotions);
+// console.log(promos);
+// console.log(promotions);
+
+// Date() captures the moment in time in which the file is loaded. Dates are always going to be considered as objects
+// there are several ways to get the date in different formats. Check below for examples
+const now = new Date();
+// console.log(now);
+// console.log(typeof now);
+// console.log('getFullYear:', now.getFullYear());
+// console.log('getMonth:', now.getMonth());
+// console.log('getDate:', now.getDate());
+// console.log('getDay:', now.getDay());
+// console.log('getHours:', now.getHours());
+// console.log('getMinutes:', now.getMinutes());
+// console.log('getSeconds:', now.getSeconds());
+
+// timestamps
+// console.log('timestamp:', now.getTime());
+
+// date strings
+// console.log(now.toDateString());
+// console.log(now.toTimeString());
+// console.log(now.toLocaleString());
+
+// create a date element that isn't the present
+// we can use several different date formats
+const before = new Date('Feburary 1 2019 7:30:59');
+// console.log(now.getTime(), before.getTime());
+
+// diff is the difference in time between Feburary 1 2019 7:30:59 and this exact moment
+const diff = now.getTime() - before.getTime();
+// console.log(diff);
+
+// here, we are dividing diff by 1000, which gets us the number of seconds, then 60, which gets the number of minutes
+const mins = Math.round(diff / 1000 / 60);
+// console.log(mins);
+// dividing mins by 60 gives us the hours since there are 60 minutes in an hour
+const hours = Math.round(mins / 60);
+// dividing hours by 24 gives us the hours, since there are 24 hours in a day
+const days = Math.round(hours / 24);
+// console.log(mins, hours, days);
+// console.log(`the blog was written ${days} days ago`);
+
+// converting timestamps into date objects
+const timestamp = 1675938474900;
+// console.log(new Date(timestamp));
+
+// this is examples of working with dates in javascript
+// this specifically uses date-fns, which makes working with dates much easier
+// in order to use date-fns, you must link it using a script tag in the html page
+// these are examples of different methods and formattings found on date-fns
+// const timenew = new Date();
+// console.log(dateFns.isToday(timenew));
+// console.log(dateFns.format(timenew, 'YYYY'));
+// console.log(dateFns.format(timenew, 'h'));
+
+// this block of code is an example of asycnhronis programming. The first two console logs fire first and then second.
+// the setTimeout function begins, and while that is waiting 2 seconds to fire, console logs 3 and 4 begin.
+// in the console, the code shows up as 1, 2, 3, 4, 'the callback function fired' because
+// setTimeout needed 2 seconds to do anything, letting console logs 3 and 4 begin as it was preparing.
+// this is not generally asynchronis programming, this is just an idea of how it works
+// console.log(1);
+// console.log(2);
+// setTimeout(() => {
+//     console.log('the callback function fired');
+// }, 2000);
+// console.log(3);
+// console.log(4);
+
+// by putting the block of code in a variable (in this case, getTodos) we are able to reuse this code whenever we want
+// we are naming the parameter callback, so we can make callback be something different each time if we wanted to
+const getTodos = (callback) => {
+// this is an example of HTTP requests, which will also require Asynchronis code
+// this describes what type of request is
+const request = new XMLHttpRequest();
+// the readystatechange event is when there is a state change in the request
+// in short, state changes are different phases. There are 4 phases in total
+// readyState is the current request is in
+// to view more info of what the states mean, check the MDN guide on XMLHttpRequests online
+// state 4 is the most important, because this is where you can actually take the data and do stuff with it
+// responseText is the property that contains the reponse data
+request.addEventListener('readystatechange', () => {
+    // console.log(request, request.readyState);
+    // readyState 4 is when the request is complete
+    // there are several different response codes (statuses) all with their own meaning. 200 is when there are no problems
+    if (request.readyState === 4 && request.status === 200) {
+        // console.log(request.responseText);
+        // JSON stands for "javascript object notation"
+        // the JSON.parse() lets us take in a JSON string and convert it to objects
+        const data = JSON.parse(request.responseText)
+        callback(undefined, data);
+    }
+    // if the request is finished but there is a problem, this code will be fired instead. This way, if there is a problem, it will tell us what the problem is
+    else if (request.readyState === 4) {
+        // console.log('could not fetch the data. Error code: ' + request.status);
+        callback('could not fetch data', undefined);
+    }
+});
+// this describes where to get the request from
+request.open('GET', '/characters.json');
+// the code above just sets up the request. This code here actually makes the request
+request.send();
+};
+
+//better example of asynchronis code. console logs 1 and 2 fires, getTodos starts, but 3 and 4 fire first while getTodos is processing
+// console.log(1);
+// console.log(2);
+// calling getTodos function
+// when we do callbacks from a network, convention is to always do error first, then data second
+getTodos((err, data) => {
+    // console.log('callback fired');
+    // if there is an error
+    if (err) {
+        console.log(err); 
+    }
+    else {
+        console.log(data);
+    }
+});
+// console.log(3);
+// console.log(4);
+
+
+
+
+
+
+
+
+
 

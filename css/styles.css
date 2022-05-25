@@ -232,7 +232,7 @@ input {
 
 .colorFront {
     margin: auto;
-    background-color: white;
+    background-color: #ccc;
     padding: 10px;
 }
 
@@ -262,3 +262,7 @@ input {
 .charContainer {
     float: left;
 }
+
+/* .charScreen {
+
+} */
