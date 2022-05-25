@@ -571,7 +571,7 @@ request.addEventListener('readystatechange', () => {
     }
 });
 // this describes where to get the request from
-request.open('GET', '/characters.json');
+request.open('GET', '/json/characters.json');
 // the code above just sets up the request. This code here actually makes the request
 request.send();
 };
