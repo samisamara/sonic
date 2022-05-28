@@ -543,56 +543,164 @@ const timestamp = 1675938474900;
 
 // by putting the block of code in a variable (in this case, getTodos) we are able to reuse this code whenever we want
 // we are naming the parameter callback, so we can make callback be something different each time if we wanted to
-const getTodos = (callback) => {
-// this is an example of HTTP requests, which will also require Asynchronis code
-// this describes what type of request is
-const request = new XMLHttpRequest();
-// the readystatechange event is when there is a state change in the request
-// in short, state changes are different phases. There are 4 phases in total
-// readyState is the current request is in
-// to view more info of what the states mean, check the MDN guide on XMLHttpRequests online
-// state 4 is the most important, because this is where you can actually take the data and do stuff with it
-// responseText is the property that contains the reponse data
-request.addEventListener('readystatechange', () => {
-    // console.log(request, request.readyState);
-    // readyState 4 is when the request is complete
-    // there are several different response codes (statuses) all with their own meaning. 200 is when there are no problems
-    if (request.readyState === 4 && request.status === 200) {
-        // console.log(request.responseText);
-        // JSON stands for "javascript object notation"
-        // the JSON.parse() lets us take in a JSON string and convert it to objects
-        const data = JSON.parse(request.responseText)
-        callback(undefined, data);
-    }
-    // if the request is finished but there is a problem, this code will be fired instead. This way, if there is a problem, it will tell us what the problem is
-    else if (request.readyState === 4) {
-        // console.log('could not fetch the data. Error code: ' + request.status);
-        callback('could not fetch data', undefined);
-    }
-});
-// this describes where to get the request from
-request.open('GET', '/json/characters.json');
-// the code above just sets up the request. This code here actually makes the request
-request.send();
+const getTodos = (resource, callback) => {
+
+    return new Promise((resolve, reject) => {
+        // this is an example of HTTP requests, which will also require Asynchronis code
+    // this describes what type of request is
+    const request = new XMLHttpRequest();
+    // the readystatechange event is when there is a state change in the request
+    // in short, state changes are different phases. There are 4 phases in total
+    // readyState is the current request is in
+    // to view more info of what the states mean, check the MDN guide on XMLHttpRequests online
+    // state 4 is the most important, because this is where you can actually take the data and do stuff with it
+    // responseText is the property that contains the reponse data
+    request.addEventListener('readystatechange', () => {
+        // console.log(request, request.readyState);
+        // readyState 4 is when the request is complete
+        // there are several different response codes (statuses) all with their own meaning. 200 is when there are no problems
+        if (request.readyState === 4 && request.status === 200) {
+            // console.log(request.responseText);
+            // JSON stands for "javascript object notation"
+            // the JSON.parse() lets us take in a JSON string and convert it to objects
+            const data = JSON.parse(request.responseText)
+            // callback(undefined, data);
+            resolve(data);
+        }
+        // if the request is finished but there is a problem, this code will be fired instead. This way, if there is a problem, it will tell us what the problem is
+        else if (request.readyState === 4) {
+            // console.log('could not fetch the data. Error code: ' + request.status);
+            // callback('could not fetch data', undefined);
+            reject('error getting resource');
+        }
+    });
+    // this describes where to get the request from
+    request.open('GET', resource);
+    // the code above just sets up the request. This code here actually makes the request
+    request.send();
+    });
+
 };
+
+// This is a single promise, not linked to anything else
+// getTodos('/json/characters.json').then(data => {
+//     console.log('promise resolved', data);
+// }).catch((err) => {
+//     console.log('promise rejected:', err)
+// });
+
+// This is an example of chaining promises together.
+// First, getTodos is called with the characters JSON file as the parameter.
+// .then() uses data from characters as a parameter, and then passes it into a function that displays it
+// within the first .then() we return getTodos, but with the games JSON file as a parameter
+// a second .then() is used to display this data, since this part takes place in the first .then(), which means we will need another .then() immedietly afterwards. This .then() displays the next set of JSON data, that being the games data. 
+// Within this section, we return getTodos a third time, with the gemstones JSON data as the parameter. 
+// Just like the second .then(), we add another .then() to take care of the work for the gemstones JSON data.
+// At the very end, we have a .catch() with err (error) as the parameter. This method is automatically called if any of the 3 todos contains an error.
+// getTodos('/json/characters.json').then(data => {
+//     console.log('promise 1 resolved', data);
+//     return getTodos('/json/games.json');
+// }).then(data => {
+//     console.log('promise 2 resolved', data);
+//     return getTodos('/json/gemstones.json');
+// }).then(data => {
+//     console.log('promise 3 resolved', data);
+// }).catch((err) => {
+//     console.log('promise rejected:', err)
+// });
+
+
+
 
 //better example of asynchronis code. console logs 1 and 2 fires, getTodos starts, but 3 and 4 fire first while getTodos is processing
 // console.log(1);
 // console.log(2);
 // calling getTodos function
 // when we do callbacks from a network, convention is to always do error first, then data second
-getTodos((err, data) => {
-    // console.log('callback fired');
-    // if there is an error
-    if (err) {
-        console.log(err); 
-    }
-    else {
-        console.log(data);
-    }
-});
+// getTodos('/json/characters.json', (err, data) => {
+//     // console.log('callback fired');
+//     // if there is an error
+//     if (err) {
+//         console.log(err); 
+//     }
+//     else {
+//         console.log(data);
+//     }
+// });
 // console.log(3);
 // console.log(4);
+
+// promise example
+// promises have two types of outcomes: either they are resolved or rejected (error)
+const getSomething = () => {
+    // in a promise, we automatically get access to two parameters inside the promise function: resolve and reject
+    return new Promise((resolve, reject) => {
+        //fetch something
+        // resolve('some data');
+        // reject('some error');
+    });
+}
+
+// a promise is essentially saying if you pass a function in .then(), then it will find the function when it resolves the promise
+// .then() 
+// getSomething().then((data) => {
+//     console.log(data)
+// }, (err) => {
+//     console.log(err)
+// });
+
+// this code is an easier version of the code above
+// .catch() catches any errors
+getSomething().then((data) => {
+    console.log(data);
+}).catch(err => {
+    console.log(err);
+});
+
+// REMINDER -- A promise is basically saying "At some point I will either resolve if there is success, or reject if there is an error"
+
+// fetch api example
+// in the previous example, if there was an error in the file we are pulling from, it shows as resolved instead of rejected
+// This is because the .catch() only activates on network errors. 
+// fetch('/json/characters.json').then((response) => {
+//     console.log('resolved', response);
+//     // If we view the response for the fetch request, we will see a method option named "json()"
+//     // We can use this json() method to get the data needed from response, which here is the characters.json data
+//     // It takes the data and parses it so we can use it inside our code easily
+//     // This returns a promise, meaning we cannot assign response.json() to a const. Instead, return the method
+//     return response.json();
+// }).then(data => {
+//     console.log(data);
+// }).catch(() => {
+//     console.log('rejected', err);
+// });
+// REMEMBER THE 3 STEPS OF FETCHING APIS:
+// First: we fetch the data
+// Second: we take the respose and return response.json, which returns a promise
+// Third: we add .then() at the end while passing the data as a parameter, that way we can actually do stuff with that data
+// PLUS we can add a .catch() at the end, which gives us an error message
+
+// THIS CODE [ const getGames = async () => {} ] is just an ordinary function 
+// By adding async in front of the paranthesis, we turn this function into what is known as an asynchronis function.
+// Whenever we call an asynchronis function, that always returns a promise, regardless of what is inside
+const getGames = async () => {
+    // In async functions, we do not need to add a .then() method
+    // Instead, we can assign the fetch to a const, and the fetch will return a promise
+    // The await key word stops the fetch from assigning a value to the variable until the promise has been resolved
+    // This WOULD block the rest of the code from being processed, but remember, we placed this all within an async function, meaning this code gets processed somewhere else in the browser, meanwhile, the rest of the code gets processed as normal
+    const response = await fetch('/json/games.json');
+    // This is how we throw our own customized errors. In this case, it is if there is a problem fetching
+    if (response.status !== 200) {
+        throw new Error('cannot fetch the data bro!');
+    }
+    const data = await response.json();
+    return data;
+};
+// remember that any async function returns a promise, so just typing "getGames();" will only result in a promise 
+getGames()
+.then(data => console.log('resolved', data))
+.catch(err => console.log('rejected', err.message));
+// adding .message to the end of err lets us see 
 
 
 
