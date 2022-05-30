@@ -1,6 +1,7 @@
 [
     { "name": "Chaos Emeralds", "Quantity": 7 },
     { "name": "Master Emerald", "Quantity": 1 },
+    { "name": "Time Stones", "Quantity": 7 },
     { "name": "Sol Emeralds", "Quantity": 7 },
     { "name": "Phantom Ruby", "Quantity": 1 }
 ]

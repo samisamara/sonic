@@ -546,7 +546,7 @@ const timestamp = 1675938474900;
 const getTodos = (resource, callback) => {
 
     return new Promise((resolve, reject) => {
-        // this is an example of HTTP requests, which will also require Asynchronis code
+    // this is an example of HTTP requests, which will also require Asynchronis code
     // this describes what type of request is
     const request = new XMLHttpRequest();
     // the readystatechange event is when there is a state change in the request
@@ -697,9 +697,9 @@ const getGames = async () => {
     return data;
 };
 // remember that any async function returns a promise, so just typing "getGames();" will only result in a promise 
-getGames()
-.then(data => console.log('resolved', data))
-.catch(err => console.log('rejected', err.message));
+// getGames()
+// .then(data => console.log('resolved', data))
+// .catch(err => console.log('rejected', err.message));
 // adding .message to the end of err lets us see 
 
 
