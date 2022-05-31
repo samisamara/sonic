@@ -32,37 +32,37 @@ var testing = function(a, b) {
 // ];
 
 //example of making an object
-let user = {
-    name: "Mike",
-    age: 30,
-    email: "mike@yahoo.com",
-    location: "New York",
-    //example of making an array of objects. This can also work inside another object, as seen here
-    blogs: [
-        { title: 'My favorite foods', likes: 30 },
-        { title: 'top ten favorite videogames', likes: 50 }
-    ],
-    //example of making functions for object
-    login() {
-        // console.log("The user logged in");
-    },
-    logout() {
-        // console.log("The user logged out");
-    },
-    logBlogs() {
-        // console.log("this user has written the following blogs:");
-        this.blogs.forEach(blog => {
-            // console.log(blog.title, blog.likes);
-        })
-    }
-};
+// let user = {
+//     name: "Mike",
+//     age: 30,
+//     email: "mike@yahoo.com",
+//     location: "New York",
+//     //example of making an array of objects. This can also work inside another object, as seen here
+//     blogs: [
+//         { title: 'My favorite foods', likes: 30 },
+//         { title: 'top ten favorite videogames', likes: 50 }
+//     ],
+//     //example of making functions for object
+//     login() {
+//         // console.log("The user logged in");
+//     },
+//     logout() {
+//         // console.log("The user logged out");
+//     },
+//     logBlogs() {
+//         // console.log("this user has written the following blogs:");
+//         this.blogs.forEach(blog => {
+//             // console.log(blog.title, blog.likes);
+//         })
+//     }
+// };
 // console.log(user);
-user.age = 35;
+// user.age = 35;
 // console.log(user.age);
 //example of using made functions for objects
-user.login();
-user.logout();
-user.logBlogs();
+// user.login();
+// user.logout();
+// user.logBlogs();
 
 //fix this later
 let charList = document.getElementById("characterList");
@@ -328,7 +328,7 @@ const filteredScores = scores.filter((score) => {
 
 // console.log(filteredScores);
 
-const users = [
+const members = [
     {name: 'sonic', premium: true},
     {name: 'tails', premium: true},
     {name: 'knuckles', premium: false},
@@ -337,8 +337,8 @@ const users = [
 ];
 
 // similar to last array filter example, we sort by if premium == true or false
-const premiumUsers = users.filter(user => user.premium);
-// console.log(premiumUsers);
+const premiumMembers = members.filter(member => member.premium);
+// console.log(premiumMembers);
 
 // map method: this method makes a new array from an array after altering it in someway
 const prices = [20, 10, 30, 25, 15, 40, 80, 5];
@@ -703,11 +703,138 @@ const getGames = async () => {
 // adding .message to the end of err lets us see 
 
 
+// Local Storage
+
+// local storage is located in the root of the console. In short, localStorage is infered, so we dont have to type     windows.localStorage, we can just type localStorage
+
+// store data in local storage
+// local storage is important, because this lets us store information without losing it, if the user refreshed or closed out of the website. Local storage stores information in the browser, which lets us come back to it later
+// everything stored in local storage must be a string. Think of it like JSON data, however numbers will automatically be converted into strings
+// to do so, you must type localStorage.setItem('key', 'value');
+localStorage.setItem('name', 'Dr. Eggman');
+localStorage.setItem('age', 50);
+
+// get data from local storage
+// to pull data from localStorage, we have to type local.Storage.getItem('key name');
+let villainName = localStorage.getItem('name');
+let age = localStorage.getItem('age');
+// console.log(villainName, age);
+
+// updating data
+// to update an already existing stored item, all we have to do is redefine it as if we were storing it for the first time
+localStorage.setItem('name', 'Mephilis');
+// this is a faster way of setting a new value for already existing ones:
+localStorage.age = 200;
+// here, we are setting villainName again since it's value was defined before we updated name. 
+villainName = localStorage.getItem('name');
+age = localStorage.getItem('age');
+// console.log(villainName, age);
+
+// ^ If we were to comment out everything above except for console.log(villainName, age), the result will still be Mephilis and 200. This is because local storage will stay on the browser even if we get rid of the code. The only reason why Dr. Eggman and 50 would reappear after uncommenting the code for it is because we are redefining data that is already there.
+
+// delete data from local storage
+// this is an example of how to get rid of a single item in local storage
+localStorage.removeItem('name');
+// here we are updating villainName to match the local storage. The new value is null because we removed name
+villainName = localStorage.getItem('name');
+// console.log(villainName);
+// this is how we remove everything in local storage
+localStorage.clear();
+villainName = localStorage.getItem('name');
+age = localStorage.getItem('age');
+// console.log(age, villainName);
+
+const teams = [
+    { teamName: 'Team Sonic', speed: 'Sonic', fly: 'Tails', power: 'Knuckles' },
+    { teamName: 'Team Rose', speed: 'Amy', fly: 'Cream', power: 'Big' },
+    { teamName: 'Team Dark', speed: 'Shadow', fly: 'Rouge', power: 'Omega' },
+    { teamName: 'Team Chaotix', speed: 'Speed', fly: 'Charmy', power: 'Vector' }
+];
+
+// Whenever we store data in local storage, we have to do so using JSON methods. This means everything must be turned into JSON string format. JSON provides several different methods we are able to utilize. It even turns single quotes into double quotes for us.
+// To turn everything into JSON compatible strings, we have to use the stringify method. This is an example of that:
+// console.log(JSON.stringify(teams));
+
+localStorage.setItem('teams', JSON.stringify(teams));
+// here, we are storing the stringified object into a variable
+const stored = localStorage.getItem('teams');
+// to turn it back into an array, we have to use JSON.parse() to turn it back
+// console.log(JSON.parse(stored));
 
 
 
+// !!--------- OBJECT ORIENTED JAVASCRIPT -----------!!
 
+// Object oriented programming is one of the most important aspect there is to learn in JavaScript.
 
+// classes are a blueprint to make an object. Whether the object is a new user, or a food item on a list, classes are the way to go. This gives javascript much needed simplicity. Anytime we create anything that can be replicated, use a class
 
+class User {
+    // constructors are required whenever we have a class. This is what lets us set parameters and use that to create new objects. It is important to have a constructors method in there, because this was lets us use the 'this' keyword
+    constructor(username, email) {
+        // set up properties
+        this.username = username;
+        this.email = email;
+        this.score = 0;
+    }
+    login() {
+        // whenever we make a class method, we want to be able to use multiple methods at once (chain methods)
+        // To do this, we have to return the object in each method
+        console.log(`${this.username} logged in`);
+        return this;
+    }
+    logout() {
+        console.log(`${this.username} is a game made by SEGA`);
+        return this;
+    }
+    incScore() {
+        this.score += 1;
+        console.log(`${this.username} has a score of ${this.score}`);
+        return this;
+    }
+}
 
+// what happens everytime the 'new' keyword is used
+// 1 - it creates a new empty object {}
+// 2 - it binds the value of 'this' to the new empty object
+// 3 - it calls the constructor function to 'build' the object
 
+// class inheritance
+// class inheritance lets us create a new Class that extends previous classes
+// For an example, a user can log in and log out, but an admin can do all of that AND as delete other users
+class Admin extends User {
+    // you only need to add a constructor to an extended class if we are going to add additional properties
+    // here, we added another parameter compared to the original User class: title. This parameter is unique to Admin class
+    constructor(username, email, title) {
+        // to include any parameters from the original class, we use super() and include any parameter names inside it.
+        super(username, email);
+        this.title = title;
+    }
+    deleteUser(user) {
+        // just like previous arrow functions, we can call our parameter whatever we want as long as the name is not taken
+        users = users.filter(u =>  u.username !== user.username);
+    }
+}
+
+const userOne = new User('tails', 'electricmiles@chaos.net');
+const userTwo = new User('eggman', 'thegreategg@egg.net');
+const userThree = new Admin('Big', 'bigthecat@froggy.net', 'OS Manager');
+// console.log(userOne, userTwo);
+// userOne.login();
+// userTwo.login();
+// userOne.incScore();
+// userOne.incScore();
+// userTwo.login().logout().incScore();
+let users = [userOne, userTwo, userThree];
+// console.log(users);
+// example of an admin deleting a user
+// userThree.deleteUser(userTwo);
+// console.log(users);
+// console.log(userThree);
+
+// ^ This is the very foundation of object oriented programming. OOP is very important in javascript
+// Everytime we create a class for new objects, we define the properties of each object type
+// Any functions we create for it are required to be located inside the prototype model, which is found in every object
+// Thankfully, the class tool does this for us automatically. 
+// However, it is still important to learn this, because this is what is happening under the hood. 
+// It is important to learn for debugging, or looking at other people's code.
