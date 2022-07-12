@@ -838,3 +838,88 @@ let users = [userOne, userTwo, userThree];
 // Thankfully, the class tool does this for us automatically. 
 // However, it is still important to learn this, because this is what is happening under the hood. 
 // It is important to learn for debugging, or looking at other people's code.
+
+
+// firebase testing
+// the following example is before firebase 9, which changes a lot.
+
+const list = document.querySelector('#SA-Stages');
+const button = document.querySelector('#unsubscribe');
+const addStage = (stage, id) => {
+    let html = `
+    <li data-id="${id}" class="stageElement">
+        <div>${stage.name}</div>
+        <button class="btn btn-danger btn-sm my-2">delete</button>
+    </li>
+    `;
+
+    list.innerHTML += html;
+}
+
+const deleteStage = (id) => {
+    const stages = document.querySelectorAll('.stageElement');
+    stages.forEach(stage => {
+        if (stage.getAttribute('data-id') === id) {
+            stage.remove();
+        }
+    })
+}
+
+// get documents
+// this block of code is a one time retrieval. 
+// This way has it's uses, but for this example we want a way to grab the data everytime there is a change.
+// db.collection('SADX-Stages').get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         addStage(doc.data(), doc.id);
+//     });
+// }).catch(err => {
+//     console.log(err);
+// });
+
+// unlike the previous example, here, this code activates every time there is a change in the collection in firestore.
+// This method works in real time.
+// whenever set up a snapshot listener, it returns a function. By storing that function in const unsub, if we were to ever
+// invoke unsub, it would cancel the real time listener, and unsubscribes from changes
+const unsub = db.collection('SADX-Stages').onSnapshot(snapshot => {
+    snapshot.docChanges().forEach(change => {
+        const doc = change.doc;
+        if (change.type === 'added') {
+            addStage(doc.data(), doc.id);
+        } else if (change.type === 'removed') {
+            deleteStage(doc.id);
+        }
+    })
+});
+
+// add documents
+const stageAdder = document.querySelector("#stageAdder");
+stageAdder.addEventListener('submit', e => {
+    e.preventDefault();
+    
+    const stage = {
+        name: stageAdder.stage.value
+    };
+    db.collection('SADX-Stages').add(stage).then(() => {
+        console.log('stage added');
+    }).catch(err => {
+        console.log(err);
+    });
+});
+
+// deleting data
+list.addEventListener('click', e => {
+    if (e.target.tagName === 'BUTTON') {
+        const id = e.target.parentElement.getAttribute('data-id');
+        db.collection('SADX-Stages').doc(id).delete().then(() => {
+            console.log('stage deleted');
+        }).catch(err => {
+            console.log(err);
+        });
+    }
+});
+
+// unsub from database changes
+button.addEventListener('click', () => {
+    unsub();
+    console.log('unsubscribed from collection changes');
+});
