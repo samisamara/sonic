@@ -923,3 +923,51 @@ button.addEventListener('click', () => {
     unsub();
     console.log('unsubscribed from collection changes');
 });
+
+// Spread Operator example. The "..." is used to grab the contents of a pre-existing array or object to add to 
+// a new array with additional values. 
+// it is important to add the ... because if you do not, then the new array will count the old array as one value.
+const numbers = [1, 2, 3];
+const newNumbers = [...numbers, 4];
+// console.log(newNumbers);
+
+// example of Spread for objects
+const person = {
+    name: 'Ian'
+};
+const newPerson = {
+    ...person,
+    age: 25
+};
+// console.log(newPerson);
+
+// Rest Operator example. The rest operator takes in an argument using ... followed by whatever we want to name the arguments
+// we then return the results of our method. This example is a filter method unrelated to the rest/spread operator
+// the result are sent to a new array or object. 
+const filter = (...args) => {
+    return args.filter(element => element === 1);
+}
+// console.log(filter(1, 2, 3));
+
+// Destructuring exmample
+// Destructuring is a simple method of pulling a single element from an array or object properties and storing it in a variable
+// This first example is grabbing the first 2 array elements
+const destNums = [1, 2, 3];
+[destNum1, destNum2] = destNums;
+// console.log(destNum1, destNum2);
+// This second example is grabbing the first and third elements in an array
+[destNm1, , destNm3] = destNums;
+// console.log(destNm1, destNm3);
+
+// This is an example of the map function, which is a built in function for arrays
+// map() will take a function as an input and executes the function on each element in the array.
+const numArray = [1, 2, 3];
+const doubleNumArray = numbers.map(num => {
+    return num * 2;
+});
+console.log(numArray);
+console.log(doubleNumArray);
+
+
+
+

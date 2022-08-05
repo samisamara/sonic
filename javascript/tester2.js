@@ -24,7 +24,6 @@ charDisplay.addEventListener('submit', e => {
 });
 
 const now = new Date();
-console.log(now);
-console.log(dateFns.format(now, 'YYYY'));
-
+// console.log(now);
+// console.log(dateFns.format(now, 'YYYY'));
 
