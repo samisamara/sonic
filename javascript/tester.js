@@ -949,7 +949,7 @@ const filter = (...args) => {
 }
 // console.log(filter(1, 2, 3));
 
-// Destructuring exmample
+// Destructuring Exmample
 // Destructuring is a simple method of pulling a single element from an array or object properties and storing it in a variable
 // This first example is grabbing the first 2 array elements
 const destNums = [1, 2, 3];
